@@ -1,0 +1,17 @@
+# deps
+node_modules/
+
+# next.js
+.next/
+out/
+
+# env
+.env
+.env.local
+
+# db
+data/
+
+# misc
+.DS_Store
+*.pem
