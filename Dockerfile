@@ -21,7 +21,11 @@ RUN npm run build
 # SQLite data directory
 RUN mkdir -p /app/data
 
+# Make startup script executable
+COPY start.sh ./start.sh
+RUN chmod +x ./start.sh
+
 # Default port — Railway overrides via $PORT at runtime
 EXPOSE 3000
 
-CMD ["sh", "-c", "node_modules/.bin/next start -p $PORT"]
+CMD ["./start.sh"]
