@@ -25,4 +25,4 @@ VOLUME ["/app/data"]
 # Default port — Railway overrides via $PORT at runtime
 EXPOSE 3000
 
-CMD ["sh", "-c", "npm start"]
+CMD ["sh", "-c", "node_modules/.bin/next start -p $PORT"]
