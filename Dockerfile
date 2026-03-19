@@ -18,9 +18,8 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
-# SQLite data directory — mount a Railway volume here for persistence
+# SQLite data directory
 RUN mkdir -p /app/data
-VOLUME ["/app/data"]
 
 # Default port — Railway overrides via $PORT at runtime
 EXPOSE 3000
