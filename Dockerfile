@@ -15,6 +15,7 @@ RUN npm install
 
 # Copy source and build
 COPY . .
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
 # SQLite data directory — mount a Railway volume here for persistence
@@ -24,4 +25,4 @@ VOLUME ["/app/data"]
 # Default port — Railway overrides via $PORT at runtime
 EXPOSE 3000
 
-CMD ["sh", "-c", "node_modules/.bin/next start -p ${PORT:-3000}"]
+CMD ["sh", "-c", "npm start"]
