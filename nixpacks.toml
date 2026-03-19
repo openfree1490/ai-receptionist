@@ -1,5 +1,7 @@
 [phases.setup]
-nixPkgs = ["nodejs_20", "python3", "gcc", "gnumake"]
+# Node.js version is auto-detected from "engines" in package.json
+# Only add C++ build tools needed to compile better-sqlite3 from source
+nixPkgs = ["python3", "gcc", "gnumake"]
 
 [phases.install]
 cmds = ["npm install"]
@@ -8,4 +10,4 @@ cmds = ["npm install"]
 cmds = ["npm run build"]
 
 [start]
-cmd = "npm start"
+cmd = "next start -p ${PORT:-3000}"
