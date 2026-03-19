@@ -8,7 +8,21 @@ export const config = {
   },
 }
 
+// Allow the widget to be embedded on any domain
+function setCors(res: NextApiResponse) {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  setCors(res)
+
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end()
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
