@@ -884,9 +884,6 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            <div className="lp-hero-floating-badge2">
-              📅 &nbsp;Appointment booked automatically
-            </div>
           </div>
         </div>
       </section>
