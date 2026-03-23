@@ -202,8 +202,13 @@ const CSS = `
     background: var(--indigo);
     display: flex; align-items: center; justify-content: center; font-size: 11px;
   }
+  .lp-phone-wrap {
+    overflow: hidden;
+    padding-top: 28px;
+    padding-bottom: 16px;
+  }
   .lp-hero-floating-badge {
-    position: absolute; top: -16px; right: -20px;
+    position: absolute; top: 8px; right: 8px;
     background: #fff; border-radius: 10px;
     padding: 10px 14px;
     box-shadow: 0 8px 24px rgba(0,0,0,.2);
@@ -212,7 +217,7 @@ const CSS = `
     white-space: nowrap;
   }
   .lp-hero-floating-badge2 {
-    position: absolute; bottom: 40px; left: -30px;
+    position: absolute; bottom: 40px; left: 8px;
     background: var(--navy-3); border: 1px solid rgba(255,255,255,.1);
     border-radius: 10px; padding: 10px 14px;
     box-shadow: 0 8px 24px rgba(0,0,0,.3);
@@ -785,8 +790,8 @@ function ContactSection() {
             </div>
 
             <div className="lp-contact-info">
-              <div className="lp-contact-info-item">📧 <span><strong>hello@nexusforge.com</strong></span></div>
-              <div className="lp-contact-info-item">📞 <span><strong>(555) 000-0000</strong></span></div>
+              <div className="lp-contact-info-item">📧 <span><strong>nexusforgeaisolutions@gmail.com</strong></span></div>
+              <div className="lp-contact-info-item">📞 <span><strong>(404) 236-6404</strong></span></div>
               <div className="lp-contact-info-item">⚡ <span>Response within 1 business day</span></div>
             </div>
           </form>
@@ -943,7 +948,7 @@ export default function LandingPage() {
               <p>It's answering in real-time using the same AI we deploy for our clients. This is exactly what your customers would experience.</p>
               <div className="lp-demo-number">
                 <span className="icon">📞</span>
-                <span>Want to hear the voice agent? Call: <strong>[DEMO NUMBER COMING SOON]</strong></span>
+                <span>Want to hear the AI in action? Call now: <strong>(404) 236-6404</strong></span>
               </div>
               <div style={{ marginTop: 28 }}>
                 <p style={{ fontSize: 13, color: 'var(--gray-500)', marginBottom: 12, fontWeight: 600 }}>Try asking:</p>
@@ -1079,6 +1084,8 @@ export default function LandingPage() {
             <span className="lp-footer-copy" style={{ marginLeft: 8 }}>© 2026</span>
           </div>
           <div className="lp-footer-links">
+            <a href="mailto:nexusforgeaisolutions@gmail.com">nexusforgeaisolutions@gmail.com</a>
+            <a href="tel:+14042366404">(404) 236-6404</a>
             <a href="/privacy">Privacy Policy</a>
             <a href="/terms">Terms of Service</a>
             <a href="/admin">Admin</a>
