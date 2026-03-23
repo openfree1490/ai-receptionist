@@ -862,9 +862,6 @@ export default function LandingPage() {
 
           {/* Phone Mockup */}
           <div className="lp-phone-wrap" style={{ position: 'relative' }}>
-            <div className="lp-hero-floating-badge">
-              ✅ &nbsp;Lead captured — <strong style={{ marginLeft: 4 }}>Sarah M.</strong>
-            </div>
             <div className="lp-phone">
               <div className="lp-phone-screen">
                 <div className="lp-phone-header">
