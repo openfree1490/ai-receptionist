@@ -97,6 +97,7 @@ const CSS = `
     max-width: var(--mw); margin: 0 auto; width: 100%;
     display: grid; grid-template-columns: 1fr 440px; gap: 60px; align-items: center;
     position: relative;
+    align-self: flex-start;
   }
   .lp-hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
@@ -147,7 +148,7 @@ const CSS = `
 
   /* phone mockup */
   .lp-phone {
-    width: 260px; height: 500px;
+    width: 260px; height: 460px;
     border: 2px solid rgba(255,255,255,.15);
     border-radius: 44px;
     background: rgba(255,255,255,.04);
