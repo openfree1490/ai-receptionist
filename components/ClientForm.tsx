@@ -9,6 +9,8 @@ export interface ClientFormData {
   voice_prompt: string
   retell_agent_id: string
   status: 'active' | 'inactive'
+  brand_color: string
+  greeting: string
 }
 
 interface Props {
@@ -26,6 +28,8 @@ const defaults: ClientFormData = {
   voice_prompt: '',
   retell_agent_id: '',
   status: 'active',
+  brand_color: '#4f46e5',
+  greeting: 'Chat with us',
 }
 
 const TEMPLATES = ['general', 'pet_groomer', 'dental', 'restaurant', 'medical', 'salon']
@@ -77,6 +81,28 @@ export default function ClientForm({ initialData, onSubmit, saving }: Props) {
           <div className="form-group">
             <label>Retell Agent ID (optional)</label>
             <input type="text" value={form.retell_agent_id} onChange={set('retell_agent_id')} placeholder="agent_..." />
+          </div>
+          <div className="form-group">
+            <label>Widget Greeting</label>
+            <input type="text" value={form.greeting} onChange={set('greeting')} placeholder="Chat with us" />
+          </div>
+          <div className="form-group">
+            <label>Brand Color</label>
+            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+              <input
+                type="color"
+                value={form.brand_color}
+                onChange={set('brand_color')}
+                style={{ width: 44, height: 36, padding: 2, border: '1px solid var(--border)', borderRadius: 6, cursor: 'pointer' }}
+              />
+              <input
+                type="text"
+                value={form.brand_color}
+                onChange={set('brand_color')}
+                placeholder="#4f46e5"
+                style={{ flex: 1 }}
+              />
+            </div>
           </div>
         </div>
       </div>

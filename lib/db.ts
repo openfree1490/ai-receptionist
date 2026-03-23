@@ -59,6 +59,10 @@ db.exec(`
   );
 `)
 
+// Migrate: add widget customization columns (no-op if already exist)
+try { db.exec(`ALTER TABLE clients ADD COLUMN brand_color TEXT NOT NULL DEFAULT '#4f46e5'`) } catch {}
+try { db.exec(`ALTER TABLE clients ADD COLUMN greeting TEXT NOT NULL DEFAULT 'Chat with us'`) } catch {}
+
 // ── Auto-seed demo clients on first boot ─────────────────────────────────────
 
 const clientCount = (db.prepare('SELECT COUNT(*) as n FROM clients').get() as { n: number }).n
@@ -172,6 +176,8 @@ export interface ClientRow {
   status: 'active' | 'inactive'
   created_at: string
   updated_at: string
+  brand_color: string
+  greeting: string
 }
 
 export interface ConversationRow {

@@ -23,31 +23,35 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       system_prompt,
       retell_agent_id,
       status,
+      brand_color,
+      greeting,
     } = req.body as Partial<ClientRow>
 
     db.prepare(
       `UPDATE clients SET
-         business_name  = COALESCE(?, business_name),
-         business_type  = COALESCE(?, business_type),
-         template_type  = COALESCE(?, template_type),
-         custom_data    = COALESCE(?, custom_data),
-         system_prompt  = COALESCE(?, system_prompt),
+         business_name   = COALESCE(?, business_name),
+         business_type   = COALESCE(?, business_type),
+         template_type   = COALESCE(?, template_type),
+         custom_data     = COALESCE(?, custom_data),
+         system_prompt   = COALESCE(?, system_prompt),
          retell_agent_id = COALESCE(?, retell_agent_id),
-         status         = COALESCE(?, status),
-         updated_at     = CURRENT_TIMESTAMP
+         status          = COALESCE(?, status),
+         brand_color     = COALESCE(?, brand_color),
+         greeting        = COALESCE(?, greeting),
+         updated_at      = CURRENT_TIMESTAMP
        WHERE id = ?`,
     ).run(
       business_name ?? null,
       business_type ?? null,
       template_type ?? null,
       custom_data != null
-        ? typeof custom_data === 'string'
-          ? custom_data
-          : JSON.stringify(custom_data)
+        ? typeof custom_data === 'string' ? custom_data : JSON.stringify(custom_data)
         : null,
       system_prompt ?? null,
       retell_agent_id ?? null,
       status ?? null,
+      brand_color ?? null,
+      greeting ?? null,
       id,
     )
 

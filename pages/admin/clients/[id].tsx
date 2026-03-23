@@ -33,6 +33,8 @@ export default function EditClient() {
           voice_prompt: (parsedCustom.voice_prompt as string) ?? '',
           retell_agent_id: data.retell_agent_id ?? '',
           status: data.status,
+          brand_color: data.brand_color || '#4f46e5',
+          greeting: data.greeting || 'Chat with us',
         })
       })
   }, [id])
@@ -50,7 +52,7 @@ export default function EditClient() {
       const res = await fetch(`/api/clients/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, custom_data: mergedCustomData }),
+        body: JSON.stringify({ ...data, custom_data: mergedCustomData, brand_color: data.brand_color, greeting: data.greeting }),
       })
       if (!res.ok) {
         const j = await res.json()
@@ -87,6 +89,32 @@ export default function EditClient() {
           style={{ background: '#f0fff4', border: '1px solid #9ae6b4', borderRadius: 8, color: '#276749' }}
         >
           Saved successfully.
+        </div>
+      )}
+
+      {initial && (
+        <div className="card" style={{ marginTop: 16 }}>
+          <div className="card-header">Embed Code</div>
+          <div className="card-body">
+            <p className="text-muted text-sm" style={{ marginBottom: 10 }}>
+              Add this snippet just before the closing <code>&lt;/body&gt;</code> tag on your client's website.
+            </p>
+            <pre
+              className="font-mono"
+              style={{
+                background: '#1e1b4b',
+                color: '#e2e8f0',
+                padding: '14px 16px',
+                borderRadius: 8,
+                fontSize: 12.5,
+                overflowX: 'auto',
+                whiteSpace: 'pre',
+                userSelect: 'all',
+              }}
+            >
+{`<script src="https://nexusforge.vip/widget.js" data-client-id="${id}"></script>`}
+            </pre>
+          </div>
         </div>
       )}
 

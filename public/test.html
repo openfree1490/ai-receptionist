@@ -3,38 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bright Paws Pet Grooming</title>
+  <title id="page-title">Demo</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f0faf4;
       color: #1a202c;
     }
 
+    /* theme vars — overridden per client */
+    :root {
+      --bg:       #f0faf4;
+      --border:   #d1fae5;
+      --primary:  #065f46;
+      --cta:      #059669;
+      --cta-h:    #047857;
+    }
+
+    body { background: var(--bg); }
+
     header {
       background: #fff;
-      border-bottom: 1px solid #d1fae5;
+      border-bottom: 1px solid var(--border);
       padding: 16px 32px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
     header .logo { font-size: 28px; }
-    header h1 { font-size: 22px; font-weight: 700; color: #065f46; }
+    header h1 { font-size: 22px; font-weight: 700; color: var(--primary); }
     header span { font-size: 13px; color: #6b7280; margin-left: 4px; }
+
+    /* Demo selector bar */
+    .demo-bar {
+      background: #1e1b4b;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .demo-bar span {
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-right: 4px;
+    }
+    .demo-bar a {
+      color: #e2e8f0;
+      font-size: 13px;
+      text-decoration: none;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1px solid #4f46e5;
+      transition: background .15s;
+    }
+    .demo-bar a:hover { background: #4f46e5; }
+    .demo-bar a.active { background: #6366f1; border-color: #6366f1; color: #fff; }
 
     .hero {
       text-align: center;
       padding: 72px 24px 48px;
     }
-    .hero .paw { font-size: 56px; margin-bottom: 16px; }
-    .hero h2 { font-size: 36px; font-weight: 800; color: #065f46; margin-bottom: 12px; }
+    .hero .icon { font-size: 56px; margin-bottom: 16px; }
+    .hero h2 { font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
     .hero p { font-size: 17px; color: #4b5563; max-width: 480px; margin: 0 auto 32px; line-height: 1.6; }
     .hero .cta {
       display: inline-block;
-      background: #059669;
+      background: var(--cta);
       color: #fff;
       padding: 13px 28px;
       border-radius: 999px;
@@ -43,7 +82,7 @@
       text-decoration: none;
       transition: background .15s;
     }
-    .hero .cta:hover { background: #047857; }
+    .hero .cta:hover { background: var(--cta-h); }
 
     .services {
       display: flex;
@@ -54,7 +93,7 @@
     }
     .service-card {
       background: #fff;
-      border: 1px solid #d1fae5;
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px 20px;
       width: 190px;
@@ -62,7 +101,7 @@
       box-shadow: 0 1px 3px rgba(0,0,0,.06);
     }
     .service-card .icon { font-size: 32px; margin-bottom: 10px; }
-    .service-card h3 { font-size: 14px; font-weight: 700; color: #065f46; margin-bottom: 6px; }
+    .service-card h3 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
     .service-card p { font-size: 12px; color: #6b7280; line-height: 1.4; }
 
     footer {
@@ -76,47 +115,153 @@
 </head>
 <body>
 
+  <div class="demo-bar">
+    <span>🎯 Demo:</span>
+    <a href="/test.html"              id="link-1">🐾 Pet Grooming</a>
+    <a href="/test.html?clientId=2"   id="link-2">🦷 Dental Practice</a>
+    <a href="/test.html?clientId=3"   id="link-3">🍽️ Restaurant</a>
+  </div>
+
   <header>
-    <span class="logo">🐾</span>
-    <h1>Bright Paws</h1>
-    <span>Pet Grooming & Spa</span>
+    <span class="logo" id="header-logo"></span>
+    <h1 id="header-name"></h1>
+    <span id="header-sub"></span>
   </header>
 
   <section class="hero">
-    <div class="paw">🐶</div>
-    <h2>Welcome to Bright Paws</h2>
-    <p>Professional grooming services for dogs and cats. Your pet deserves to look and feel their best — we're here to help!</p>
-    <a href="#" class="cta">Book an Appointment</a>
+    <div class="icon" id="hero-icon"></div>
+    <h2 id="hero-title"></h2>
+    <p id="hero-desc"></p>
+    <a href="#" class="cta" id="hero-cta"></a>
   </section>
 
-  <section class="services">
-    <div class="service-card">
-      <div class="icon">🛁</div>
-      <h3>Full Groom</h3>
-      <p>Bath, dry, haircut, nail trim & ear clean</p>
-    </div>
-    <div class="service-card">
-      <div class="icon">✂️</div>
-      <h3>Bath & Brush</h3>
-      <p>Deep clean and blow-dry for a fresh coat</p>
-    </div>
-    <div class="service-card">
-      <div class="icon">💅</div>
-      <h3>Nail Trim</h3>
-      <p>Quick and stress-free nail trimming</p>
-    </div>
-    <div class="service-card">
-      <div class="icon">🌿</div>
-      <h3>De-shed Treatment</h3>
-      <p>Reduce shedding with our premium treatment</p>
-    </div>
-  </section>
+  <section class="services" id="services-grid"></section>
 
-  <footer>
-    742 Maple Street, Sunnyvale CA &nbsp;·&nbsp; (555) 201-4567 &nbsp;·&nbsp; Mon–Sat 8am–6pm
-  </footer>
+  <footer id="footer-text"></footer>
 
-  <script src="https://nexusforge.vip/widget.js" data-client-id="1"></script>
+<script>
+(function () {
+  // ── Client definitions ────────────────────────────────────────────────────
+  var CLIENTS = {
+    1: {
+      name:    'Bright Paws',
+      sub:     'Pet Grooming & Spa',
+      logo:    '🐾',
+      heroIcon:'🐶',
+      title:   'Welcome to Bright Paws',
+      desc:    'Professional grooming services for dogs and cats. Your pet deserves to look and feel their best — we\'re here to help!',
+      cta:     'Book an Appointment',
+      footer:  '742 Maple Street, Sunnyvale CA · (555) 201-4567 · Mon–Sat 8am–6pm',
+      bg:      '#f0faf4',
+      border:  '#d1fae5',
+      primary: '#065f46',
+      cta_c:   '#059669',
+      cta_h:   '#047857',
+      services: [
+        { icon:'🛁', name:'Full Groom',        desc:'Bath, dry, haircut, nail trim & ear clean' },
+        { icon:'✂️',  name:'Bath & Brush',      desc:'Deep clean and blow-dry for a fresh coat' },
+        { icon:'💅', name:'Nail Trim',          desc:'Quick and stress-free nail trimming' },
+        { icon:'🌿', name:'De-shed Treatment',  desc:'Reduce shedding with our premium treatment' },
+      ],
+    },
+    2: {
+      name:    'Summit Dental',
+      sub:     'Family & Cosmetic Dentistry',
+      logo:    '🦷',
+      heroIcon:'😊',
+      title:   'Welcome to Summit Dental',
+      desc:    'Compassionate dental care for the whole family. From routine cleanings to cosmetic procedures — we\'ve got your smile covered.',
+      cta:     'Request an Appointment',
+      footer:  '1805 Summit Ave, Denver CO · (555) 348-2900 · Mon–Fri 8am–5pm',
+      bg:      '#eff6ff',
+      border:  '#bfdbfe',
+      primary: '#1e3a8a',
+      cta_c:   '#2563eb',
+      cta_h:   '#1d4ed8',
+      services: [
+        { icon:'🪥', name:'Cleanings',         desc:'Routine exams & professional cleaning' },
+        { icon:'✨', name:'Teeth Whitening',    desc:'In-office & take-home whitening options' },
+        { icon:'🦷', name:'Dental Implants',    desc:'Permanent tooth replacement solutions' },
+        { icon:'😁', name:'Invisalign',         desc:'Clear aligner therapy for straighter teeth' },
+      ],
+    },
+    3: {
+      name:    'Rosewood Kitchen & Bar',
+      sub:     'Farm-to-Table Dining',
+      logo:    '🌹',
+      heroIcon:'🍷',
+      title:   'Welcome to Rosewood Kitchen',
+      desc:    'Seasonal farm-to-table cuisine in a warm, welcoming atmosphere. Join us for dinner, weekend brunch, or a private event.',
+      cta:     'Reserve a Table',
+      footer:  '320 Rosewood Lane, Austin TX · (555) 412-7788 · Tue–Sun 5pm–10pm',
+      bg:      '#fff7ed',
+      border:  '#fed7aa',
+      primary: '#7c2d12',
+      cta_c:   '#c2410c',
+      cta_h:   '#9a3412',
+      services: [
+        { icon:'🥗', name:'Dinner Menu',        desc:'Rotating seasonal tasting & à la carte' },
+        { icon:'🥂', name:'Weekend Brunch',      desc:'Sat & Sun 10am–2pm · reservations advised' },
+        { icon:'🍸', name:'Full Bar',            desc:'Craft cocktails, local wine & artisan beer' },
+        { icon:'🎉', name:'Private Events',      desc:'Buy-out & private dining for any occasion' },
+      ],
+    },
+  }
+
+  // ── Read clientId from URL ────────────────────────────────────────────────
+  var params   = new URLSearchParams(window.location.search)
+  var clientId = parseInt(params.get('clientId') || '1', 10)
+
+  // Fallback to 1 if unknown
+  if (!CLIENTS[clientId]) clientId = 1
+  var client = CLIENTS[clientId]
+
+  // ── Apply theme ───────────────────────────────────────────────────────────
+  var root = document.documentElement.style
+  root.setProperty('--bg',      client.bg)
+  root.setProperty('--border',  client.border)
+  root.setProperty('--primary', client.primary)
+  root.setProperty('--cta',     client.cta_c)
+  root.setProperty('--cta-h',   client.cta_h)
+  document.body.style.background = client.bg
+
+  // ── Populate content ──────────────────────────────────────────────────────
+  document.title = client.name + ' — AI Receptionist Demo'
+  document.getElementById('page-title').textContent = client.name + ' — AI Receptionist Demo'
+
+  document.getElementById('header-logo').textContent = client.logo
+  document.getElementById('header-name').textContent = client.name
+  document.getElementById('header-sub').textContent  = client.sub
+
+  document.getElementById('hero-icon').textContent  = client.heroIcon
+  document.getElementById('hero-title').textContent = client.title
+  document.getElementById('hero-desc').textContent  = client.desc
+  document.getElementById('hero-cta').textContent   = client.cta
+
+  document.getElementById('footer-text').textContent = client.footer
+
+  var grid = document.getElementById('services-grid')
+  client.services.forEach(function (s) {
+    var card = document.createElement('div')
+    card.className = 'service-card'
+    card.innerHTML =
+      '<div class="icon">' + s.icon + '</div>' +
+      '<h3>' + s.name + '</h3>' +
+      '<p>' + s.desc + '</p>'
+    grid.appendChild(card)
+  })
+
+  // ── Highlight active demo link ─────────────────────────────────────────────
+  var activeLink = document.getElementById('link-' + clientId)
+  if (activeLink) activeLink.classList.add('active')
+
+  // ── Load widget with correct clientId ─────────────────────────────────────
+  var script = document.createElement('script')
+  script.src = '/widget.js'
+  script.setAttribute('data-client-id', String(clientId))
+  document.body.appendChild(script)
+})()
+</script>
 
 </body>
 </html>

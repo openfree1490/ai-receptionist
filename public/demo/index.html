@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live AI Receptionist Demos — Nexus Forge</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0c29;
+      color: #f1f5f9;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 24px 40px;
+    }
+    header .brand { font-size: 13px; font-weight: 700; color: #6366f1; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 16px; }
+    header h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    header h1 span { background: linear-gradient(90deg, #6366f1, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    header p { font-size: 18px; color: #94a3b8; max-width: 560px; margin: 0 auto 36px; line-height: 1.6; }
+
+    .demos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .demo-card {
+      background: #1e1b4b;
+      border: 1px solid #4f46e5;
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      display: block;
+    }
+    .demo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(99,102,241,.3);
+      border-color: #38bdf8;
+      text-decoration: none;
+    }
+    .demo-card .icon { font-size: 48px; margin-bottom: 16px; display: block; }
+    .demo-card .industry { font-size: 11px; font-weight: 700; color: #6366f1; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
+    .demo-card h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+    .demo-card p { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 20px; }
+    .demo-card .try-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, #6366f1, #38bdf8);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .voice-banner {
+      max-width: 1100px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+    .voice-banner-inner {
+      background: #1e1b4b;
+      border: 1px solid #ec4899;
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .voice-banner-inner .icon { font-size: 36px; flex-shrink: 0; }
+    .voice-banner-inner h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .voice-banner-inner p { font-size: 14px; color: #94a3b8; }
+
+    .cta-section {
+      text-align: center;
+      padding: 0 24px 80px;
+    }
+    .cta-section h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+    .cta-section p { color: #94a3b8; margin-bottom: 28px; font-size: 16px; }
+    .cta-link {
+      display: inline-block;
+      background: linear-gradient(90deg, #6366f1, #38bdf8);
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .cta-link:hover { opacity: .9; text-decoration: none; }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: #475569;
+      border-top: 1px solid #1e1b4b;
+    }
+    footer a { color: #6366f1; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">Nexus Forge · Live Demos</div>
+    <h1>See the AI Receptionist<br><span>In Action</span></h1>
+    <p>Each demo is a real, working AI receptionist trained on a specific business. Chat with it — ask real questions, try to book, see how it handles edge cases.</p>
+  </header>
+
+  <div class="demos">
+
+    <a href="/test.html" class="demo-card">
+      <span class="icon">🐾</span>
+      <div class="industry">Pet Grooming</div>
+      <h2>Bright Paws</h2>
+      <p>A full-service pet grooming salon. Ask about services, pricing, or try to book a grooming appointment for your dog.</p>
+      <span class="try-btn">Try it live →</span>
+    </a>
+
+    <a href="/test.html?clientId=2" class="demo-card">
+      <span class="icon">🦷</span>
+      <div class="industry">Dental Practice</div>
+      <h2>Summit Dental</h2>
+      <p>A family dental office. Ask about insurance, new patient procedures, or schedule a cleaning appointment.</p>
+      <span class="try-btn">Try it live →</span>
+    </a>
+
+    <a href="/test.html?clientId=3" class="demo-card">
+      <span class="icon">🍽️</span>
+      <div class="industry">Restaurant</div>
+      <h2>Rosewood Kitchen</h2>
+      <p>An upscale American restaurant. Ask about the menu, make a reservation, or inquire about private dining.</p>
+      <span class="try-btn">Try it live →</span>
+    </a>
+
+  </div>
+
+  <div class="voice-banner">
+    <div class="voice-banner-inner">
+      <span class="icon">📞</span>
+      <div>
+        <h3>Voice Demo — Coming Soon</h3>
+        <p>Our AI voice receptionist answers real phone calls — natural speech, not a phone tree. We're purchasing dedicated numbers via Retell AI. <strong style="color:#f1f5f9">Check back soon.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Want one for your business?</h2>
+    <p>We build and deploy your custom AI receptionist in 24–48 hours. No software to learn.</p>
+    <a href="https://nexusforge.vip" class="cta-link">Get Started → nexusforge.vip</a>
+  </div>
+
+  <footer>
+    <a href="https://nexusforge.vip">nexusforge.vip</a> &nbsp;·&nbsp; Powered by Nexus Forge LLC &nbsp;·&nbsp; AI Receptionist Platform
+  </footer>
+
+</body>
+</html>

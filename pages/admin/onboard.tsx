@@ -123,6 +123,7 @@ export default function OnboardPage() {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
   const [activePromptTab, setActivePromptTab] = useState<'chat' | 'voice'>('chat')
+  const [savedClientId, setSavedClientId] = useState<number | null>(null)
 
   // ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -215,7 +216,7 @@ export default function OnboardPage() {
       })
       const json = await res.json()
       if (!res.ok) throw new Error(json.error || 'Save failed')
-      router.push(`/admin/clients/${json.id}`)
+      setSavedClientId(json.id)
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : 'Unknown error')
       setSaving(false)
@@ -740,6 +741,45 @@ export default function OnboardPage() {
                 background: '#fafafa',
               }}
             />
+          </div>
+        )}
+
+        {savedClientId && (
+          <div
+            style={{
+              marginTop: 24,
+              padding: 20,
+              background: '#f0fff4',
+              border: '1px solid #9ae6b4',
+              borderRadius: 10,
+            }}
+          >
+            <div style={{ fontWeight: 700, color: '#276749', fontSize: 15, marginBottom: 8 }}>
+              ✓ Client saved! Here is the embed code:
+            </div>
+            <pre
+              className="font-mono"
+              style={{
+                background: '#1e1b4b',
+                color: '#e2e8f0',
+                padding: '12px 16px',
+                borderRadius: 8,
+                fontSize: 12.5,
+                overflowX: 'auto',
+                userSelect: 'all',
+                marginBottom: 12,
+              }}
+            >
+{`<script src="https://nexusforge.vip/widget.js" data-client-id="${savedClientId}"></script>`}
+            </pre>
+            <div style={{ display: 'flex', gap: 10 }}>
+              <a href={`/admin/clients/${savedClientId}`}>
+                <button className="btn btn-primary btn-sm">Edit Client →</button>
+              </a>
+              <a href={`/test.html?clientId=${savedClientId}`} target="_blank" rel="noreferrer">
+                <button className="btn btn-ghost btn-sm">Preview Demo ↗</button>
+              </a>
+            </div>
           </div>
         )}
       </div>
