@@ -1,0 +1,10 @@
+[
+  { "vertical": "dentist",      "location": "Fairburn, GA",       "radius": 15 },
+  { "vertical": "dentist",      "location": "Peachtree City, GA", "radius": 10 },
+  { "vertical": "hair salon",   "location": "Fairburn, GA",       "radius": 15 },
+  { "vertical": "nail salon",   "location": "Union City, GA",     "radius": 10 },
+  { "vertical": "med spa",      "location": "Peachtree City, GA", "radius": 10 },
+  { "vertical": "plumber",      "location": "Fairburn, GA",       "radius": 15 },
+  { "vertical": "HVAC repair",  "location": "Union City, GA",     "radius": 10 },
+  { "vertical": "electrician",  "location": "Fayetteville, GA",   "radius": 10 }
+]
